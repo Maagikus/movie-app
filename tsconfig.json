@@ -24,12 +24,8 @@
       "dom"
     ],
 	 "paths": {
-		"@components":["./src/app/components/*"],
-		"@pages":["./src/app/pages/*"],
-		"@services":["./src/app/services/*"],
-		"@models":["./src/app/models/*"],
-		"@shared":["./src/app/shared/*"],
-		"@assets":["./src/assets/*"],
+		"@components":["./src"],
+
 	 }
   },
   "angularCompilerOptions": {

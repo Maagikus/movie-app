@@ -1,0 +1,16 @@
+<div class="movie-card">
+	<div class="movie-card__image movie-card__image-ibg">
+		<img [src]="movie.backdrop_path" alt="{{ movie.title }}">
+	</div>
+	<div class="movie-card__details">
+		<div class="movie-card__content">
+			<h2 class="movie-card__title">{{ movie.title }}</h2>
+			<p class="movie-card__description"> {{transformOverview( movie.overview) }}</p>
+			<p class="movie-card__raiting">Рейтинг: {{ movie.popularity }}</p>
+		</div>
+		<div class="movie-card__footer">
+			<button class="movie-card__button button" (click)="addToFavorites()">Додати до улюблених</button>
+			<button class="movie-card__button button" (click)="addToWatchList()">Додати до списку перегляду</button>
+		</div>
+	</div>
+</div>

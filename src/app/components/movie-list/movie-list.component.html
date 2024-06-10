@@ -1,1 +1,31 @@
-<p>movie-list works!</p>
+<div class="movie-list">
+	<div class="movie-list__content">
+		<div class="movie-list__all">
+			<ul class="movie-list__list">
+				<li class="movie-list__item" *ngFor="let movie of movieList">
+					<app-movie-card [movie]="movie" (addFavorite)="onAddToFavorites($event)" (addWatchList)="onAddToWatchList($event)"></app-movie-card>
+				</li>
+			</ul>
+		</div>
+		<div class="movie-list__favourite">
+			<ul *ngIf="favoriteList.length; else noMovies" class="movie-list__list">
+				<li class="movie-list__item-normal  " *ngFor="let movie of favoriteList">
+					<div class="movie-list__name">{{movie.title}};</div>
+				</li>
+			</ul>
+			<ng-template #noMovies>
+				<div class="movie-list__message">Ви не обрали фільмів для перегляду</div>
+			</ng-template>
+		</div>
+		<div class="movie-list__watch">
+			<ul *ngIf="watchList.length; else noMovies" class="movie-list__list">
+				<li class="movie-list__item-normal " *ngFor="let movie of watchList">
+					<div class="movie-list__name">{{movie.title}};</div>
+				</li>
+			</ul>
+			<ng-template #noMovies>
+				<div class="movie-list__message">Ви не обрали фільмів для перегляду</div>
+			</ng-template>
+		</div>
+	</div>
+</div>
