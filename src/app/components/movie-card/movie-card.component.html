@@ -5,7 +5,7 @@
 	<div class="movie-card__details">
 		<div class="movie-card__content">
 			<h2 class="movie-card__title">{{ movie.title }}</h2>
-			<p class="movie-card__description"> {{transformOverview( movie.overview) }}</p>
+			<p class="movie-card__description"> {{ movie.overview | textTruncate }}</p>
 			<p class="movie-card__raiting">Рейтинг: {{ movie.popularity }}</p>
 		</div>
 		<div class="movie-card__footer">

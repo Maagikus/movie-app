@@ -63,10 +63,33 @@
 	}
 
 	// .movie-list__favourite
-	&__favourite {}
+	&__favourite {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		.movie-list__list {
+			padding: 0;
+		}
+	}
+
+	&__title {
+		font-size: 20px;
+		text-align: center;
+	}
 
 	// .movie-list__watch
-	&__watch {}
+
+	&__watch {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		.movie-list__list {
+			padding: 0;
+		}
+
+	}
 
 	&__message {
 		text-align: center;

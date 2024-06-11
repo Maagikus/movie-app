@@ -8,16 +8,18 @@
 			</ul>
 		</div>
 		<div class="movie-list__favourite">
+			<div class="movie-list__title">Улюблені</div>
 			<ul *ngIf="favoriteList.length; else noMovies" class="movie-list__list">
 				<li class="movie-list__item-normal  " *ngFor="let movie of favoriteList">
 					<div class="movie-list__name">{{movie.title}};</div>
 				</li>
 			</ul>
 			<ng-template #noMovies>
-				<div class="movie-list__message">Ви не обрали фільмів для перегляду</div>
+				<div class="movie-list__message">Ви не обрали улюблених фільмів</div>
 			</ng-template>
 		</div>
 		<div class="movie-list__watch">
+			<div class="movie-list__title">До перегляду</div>
 			<ul *ngIf="watchList.length; else noMovies" class="movie-list__list">
 				<li class="movie-list__item-normal " *ngFor="let movie of watchList">
 					<div class="movie-list__name">{{movie.title}};</div>
