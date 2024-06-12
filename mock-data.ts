@@ -15,6 +15,7 @@ export const movies = [
     video: false,
     vote_average: 6.932,
     vote_count: 807,
+    duration:125
   },
   {
     adult: false,
@@ -32,6 +33,7 @@ export const movies = [
     video: false,
     vote_average: 7.1,
     vote_count: 1296,
+    duration:230
   },
   {
     adult: false,
@@ -49,6 +51,7 @@ export const movies = [
     video: false,
     vote_average: 7.233,
     vote_count: 2519,
+    duration:170
   },
   {
     adult: false,
@@ -66,5 +69,6 @@ export const movies = [
     video: false,
     vote_average: 6.5,
     vote_count: 341,
+    duration:50
   },
 ];

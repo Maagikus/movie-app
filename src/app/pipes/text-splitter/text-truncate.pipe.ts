@@ -10,8 +10,9 @@ export class TextTruncatePipe implements PipeTransform {
     if (value.length < MAX_LENGTH) return value;
     const truncatedString = value.substring(0, MAX_LENGTH);
     const lastSpaceIndex = truncatedString.lastIndexOf(' ');
-    return lastSpaceIndex === -1
-      ? truncatedString
-      : truncatedString.substring(0, lastSpaceIndex) + '...';
+
+    return lastSpaceIndex === -1 ?
+      truncatedString :
+      truncatedString.substring(0, lastSpaceIndex) + '...';
   }
 }
