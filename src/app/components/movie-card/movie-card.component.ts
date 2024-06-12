@@ -12,16 +12,16 @@ import { DurationTransformerPipe } from '../../pipes/duration-transformer/durati
   styleUrl: './movie-card.component.scss',
 })
 export class MovieCardComponent {
-    @Input() movie!: Movie;
-    @Output() addFavorite = new EventEmitter<number>();
-    @Output() addWatchList = new EventEmitter<number>();
+  @Input() movie!: Movie;
+  @Output() addFavorite = new EventEmitter<number>();
+  @Output() addWatchList = new EventEmitter<number>();
 
-    constructor() {}
+  constructor() {}
 
-    addToFavorites() {
-      this.addFavorite.emit(this.movie.id);
-    }
-    addToWatchList() {
-      this.addWatchList.emit(this.movie.id);
-    }
+  addToFavorites() {
+    this.addFavorite.emit(this.movie.id);
+  }
+  addToWatchList() {
+    this.addWatchList.emit(this.movie.id);
+  }
 }

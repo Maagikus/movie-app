@@ -11,8 +11,8 @@ export class TextTruncatePipe implements PipeTransform {
     const truncatedString = value.substring(0, MAX_LENGTH);
     const lastSpaceIndex = truncatedString.lastIndexOf(' ');
 
-    return lastSpaceIndex === -1 ?
-      truncatedString :
-      truncatedString.substring(0, lastSpaceIndex) + '...';
+    return lastSpaceIndex === -1
+      ? truncatedString
+      : truncatedString.substring(0, lastSpaceIndex) + '...';
   }
 }
