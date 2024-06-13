@@ -27,4 +27,7 @@ export class MovieListComponent {
       this.watchList = [...this.watchList, movie];
     }
   }
+  trackById(index: number, item: Movie): number {
+    return item.id;
+  }
 }
