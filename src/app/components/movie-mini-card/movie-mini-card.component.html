@@ -1,0 +1,12 @@
+<div class="card-mini">
+	<a href="#" class="card-mini__link">
+		<div class="card-mini__raiting">
+			<i class="pi pi-star-fill" style="color: #d4af37"></i>
+			<span>{{movie.vote_average}}</span>/10
+		</div>
+		<div class="card-mini__image card-mini__image-ibg">
+			<img [src]="movie.backdrop_path" [alt]="movie.title">
+		</div>
+		<div *ngIf="movie.title" class="card-mini__title">{{movie.title}}</div>
+	</a>
+</div>

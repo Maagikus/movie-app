@@ -1,13 +1,23 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Movie } from 'src/app/interfaces/movie';
 import { TextTruncatePipe } from '../../pipes/text-splitter/text-truncate.pipe';
 import { DurationTransformerPipe } from '../../pipes/duration-transformer/duration-transformer.pipe';
+import { CardModule } from 'primeng/card';
+import { Button } from 'primeng/button';
+import { StyleClassModule } from 'primeng/styleclass';
 
 @Component({
   selector: 'app-movie-card',
   standalone: true,
-  imports: [CommonModule, TextTruncatePipe, DurationTransformerPipe],
+  imports: [
+    CommonModule,
+    TextTruncatePipe,
+    DurationTransformerPipe,
+    CardModule,
+    Button,
+    StyleClassModule,
+  ],
   templateUrl: './movie-card.component.html',
   styleUrl: './movie-card.component.scss',
 })
