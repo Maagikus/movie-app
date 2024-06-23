@@ -3,7 +3,7 @@
 		<div class="movie-list__all">
 			<ul class="grid justify-content-center">
 				<li class="col-12 md:col-6 sm:col-12 lg:col-2" *ngFor="let movie of movieList; trackBy: trackById">
-					<app-movie-card [movie]="movie" (addFavorite)="onAddToFavorites($event)" (addWatchList)="onAddToWatchList($event)"></app-movie-card>
+					<app-movie-mini-card [movie]="movie"></app-movie-mini-card>
 				</li>
 			</ul>
 		</div>
@@ -11,7 +11,7 @@
 			<div class="movie-list__title">Улюблені</div>
 			<ul *ngIf="favoriteList.length; else noMovies" class="grid justify-content-center">
 				<li class="col-12 md:col-6 sm:col-12 lg:col-2" *ngFor="let movie of favoriteList; trackBy: trackById">
-					<app-movie-mini-card [movie]="movie"></app-movie-mini-card>
+					<app-movie-mini-card [movie]="movie" (addFavorite)="onAddToFavorites($event)" (addWatchList)="onAddToWatchList($event)"></app-movie-mini-card>
 					<!-- <app-movie-card [movie]="movie" (addFavorite)="onAddToFavorites($event)" (addWatchList)="onAddToWatchList($event)"></app-movie-card> -->
 				</li>
 			</ul>
@@ -23,7 +23,7 @@
 			<div class="movie-list__title">До перегляду</div>
 			<ul *ngIf="watchList.length; else noMovies" class="grid justify-content-center">
 				<li class="col-12 md:col-6 sm:col-12 lg:col-2" *ngFor="let movie of watchList; trackBy: trackById">
-					<app-movie-mini-card [movie]="movie"></app-movie-mini-card>
+					<app-movie-mini-card [movie]="movie" (addFavorite)="onAddToFavorites($event)" (addWatchList)="onAddToWatchList($event)"></app-movie-mini-card>
 					<!-- <app-movie-card [movie]="movie" (addFavorite)="onAddToFavorites($event)" (addWatchList)="onAddToWatchList($event)"></app-movie-card> -->
 				</li>
 			</ul>
@@ -33,3 +33,4 @@
 		</div>
 	</div>
 </div>
+<!-- (addFavorite)="onAddToFavorites($event)" (addWatchList)="onAddToWatchList($event)" -->

@@ -1,0 +1,11 @@
+<div class="movie-list__favourite">
+	<div class="movie-list__title">Улюблені</div>
+	<ul *ngIf="watchList.length; else noMovies" class="grid justify-content-center">
+		<li class="col-12 md:col-6 sm:col-12 lg:col-2" *ngFor="let item of watchList trackBy: trackByFn">
+			<app-movie-mini-card [movie]="item"></app-movie-mini-card>
+		</li>
+	</ul>
+	<ng-template #noMovies>
+		<div class="movie-list__message">Ви не обрали улюблених фільмів</div>
+	</ng-template>
+</div>

@@ -638,3 +638,9 @@ export const upcomingMovies = [
     vote_count: 287,
   },
 ];
+export const allMovies = [
+  ...upcomingMovies,
+  ...topRatedMovies,
+  ...popularMovies,
+  ...nowPlayingMovies,
+];

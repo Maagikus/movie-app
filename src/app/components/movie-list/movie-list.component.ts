@@ -1,19 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Movie } from 'src/app/interfaces/movie';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
 import { CommonModule } from '@angular/common';
-import { movies } from 'mock-data';
+// import { movies } from 'mock-data';
 import { MovieMiniCardComponent } from '../movie-mini-card/movie-mini-card.component';
 
 @Component({
   selector: 'app-movie-list',
   standalone: true,
-  imports: [CommonModule, MovieCardComponent, MovieMiniCardComponent],
+  imports: [CommonModule, MovieCardComponent, MovieMiniCardComponent, MovieMiniCardComponent],
   templateUrl: './movie-list.component.html',
   styleUrl: './movie-list.component.scss',
 })
 export class MovieListComponent {
-  movieList: Movie[] = movies;
+  @Input() movieList!: Movie[];
   favoriteList: Movie[] = [];
   watchList: Movie[] = [];
 

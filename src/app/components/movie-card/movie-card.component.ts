@@ -25,9 +25,11 @@ export class MovieCardComponent {
   @Input() movie!: Movie;
   @Output() addFavorite = new EventEmitter<number>();
   @Output() addWatchList = new EventEmitter<number>();
-
+  movieUrl: string = '';
   constructor() {}
-
+  ngOnInit() {
+    this.movieUrl = `https://image.tmdb.org/t/p/w500${this.movie.backdrop_path}`;
+  }
   addToFavorites() {
     this.addFavorite.emit(this.movie.id);
   }
