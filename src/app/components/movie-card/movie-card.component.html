@@ -1,34 +1,20 @@
 <p-card styleClass="movie-card" [header]="movie.title">
-  <ng-template pTemplate="header">
-    <div class="movie-card__image movie-card__image-ibg">
-      <img alt="Card" [src]="movie.backdrop_path" />
-    </div>
-  </ng-template>
-  <div class="movie-card__details">
-    <div class="movie-card__content">
-      <p class="movie-card__description">
-        {{ movie.overview | textTruncate }}
-      </p>
-      <p class="movie-card__raiting">Рейтинг: {{ movie.popularity }}</p>
-      <p class="movie-card__raiting">
-        Тривалість:
-        {{ movie.duration ? (movie.duration | durationTransformer) : '---' }}
-      </p>
-    </div>
-  </div>
-
-  <ng-template pTemplate="footer">
-    <div class="movie-card__footer">
-      <p-button
-        label=" Додати до улюблених"
-        styleClass="movie-card__button button"
-        (click)="addToFavorites()"
-      />
-      <p-button
-        label=" Додати до списку перегляду"
-        styleClass="movie-card__button button"
-        (click)="addToWatchList()"
-      />
-    </div>
-  </ng-template>
+	<ng-template pTemplate="header">
+		<div class="movie-card__image movie-card__image-ibg">
+			<img alt="Card" [src]="movieUrl" />
+		</div>
+	</ng-template>
+	<div class="movie-card__details">
+		<div class="movie-card__content">
+			<p class="movie-card__description"> {{ movie.overview | textTruncate }} </p>
+			<p class="movie-card__raiting">Рейтинг: {{ movie.popularity }}</p>
+			<p class="movie-card__raiting"> Тривалість: {{ movie.duration ? (movie.duration | durationTransformer) : '---' }} </p>
+		</div>
+	</div>
+	<ng-template pTemplate="footer">
+		<div class="movie-card__footer">
+			<p-button label=" Додати до улюблених" styleClass="movie-card__button button" (click)="addToFavorites()" />
+			<p-button label=" Додати до списку перегляду" styleClass="movie-card__button button" (click)="addToWatchList()" />
+		</div>
+	</ng-template>
 </p-card>

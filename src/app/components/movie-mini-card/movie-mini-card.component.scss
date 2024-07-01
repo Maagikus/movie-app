@@ -3,10 +3,19 @@
 .card-mini {
 	position: relative;
 	display: block;
-	min-height: 300px;
+	// min-height: 300px;
 	border-radius: 5px;
 	background-color: #212121;
 	border: 1px solid #999;
+
+
+	@media (any-hover: hover) {
+		&:hover {
+			.card-mini__control {
+				opacity: 1;
+			}
+		}
+	}
 
 	// .card-mini__link
 	&__link {}
@@ -32,7 +41,7 @@
 	// .card-mini__image
 	&__image {
 
-		padding-bottom: math.div(150px, 100px) * 100%;
+		padding-bottom: math.div(100px, 100px) * 100%;
 		position: relative;
 
 
@@ -40,6 +49,7 @@
 
 	&__image-ibg {
 		position: relative;
+
 
 
 		img {
@@ -53,12 +63,44 @@
 	}
 
 	&__title {
-		display: flex;
-		align-items: center;
+		text-align: center;
 		font-weight: bold;
+		font-size: 14px;
 		margin: 0.5rem;
 		height: 30px;
 		color: #fff;
+	}
+
+	&__footer {
+		padding: 10px 5px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+	}
+
+	&__control {
+		opacity: 0;
+		transition: all 0.3s ease 0s;
+		position: absolute;
+		z-index: 5;
+		width: 100%;
+		bottom: 0;
+		padding: 10px 10px;
+		display: flex;
+		justify-content: space-around;
+	}
+}
+
+.hover-color {
+	color: #fff;
+	font-size: 1.5rem;
+	transition: all 0.3s ease 0s;
+
+	@media (any-hover: hover) {
+		&:hover {
+			color: #d4af37;
+		}
 	}
 }
 

@@ -1,0 +1,147 @@
+@use "sass:math";
+
+.curremn-movie {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	&__title {
+		font-weight: bold;
+
+	}
+
+	&__poster {}
+
+
+	&__item {}
+
+	&__image {}
+
+	&__control {
+		display: flex;
+		gap: 30px;
+		cursor: pointer;
+
+		.hover-color {
+			color: #d4af37;
+			font-size: 3rem;
+		}
+	}
+
+	// .curremn-movie__bg
+	&__image-ibg {
+		position: relative;
+		padding-bottom: math.div(600px, 1920px) * 100%;
+
+
+		img {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			object-fit: cover;
+		}
+
+		&::after {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			display: block;
+			content: '';
+
+			background-image: linear-gradient(to right,
+					#000 0,
+					transparent 75%,
+					transparent 100% // 90deg,
+					// rgba(0,0,0,1) 0%,
+					// rgba(0,0,0,1) 30%,
+					// rgba(255,255,255,0) 100%
+				);
+		}
+	}
+
+	// .curremn-movie__image
+	&__image {}
+
+	// .curremn-movie__pane
+	&__pane {
+		position: absolute;
+		z-index: 2;
+		width: 90%;
+		bottom: 5rem;
+		left: 5rem;
+		color: #fff;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+
+	}
+
+	// .curremn-movie__name
+	&__name {
+		font-size: 2.8rem;
+		color: #fff;
+	}
+
+	// .curremn-movie__meta
+	&__meta {
+
+		font-size: 1.4rem;
+		color: #ccc;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	// .curremn-movie__info
+	&__info {
+		display: flex;
+
+		>span {
+			&:not(:last-child)::after {
+				content: '|';
+				margin-right: 9px;
+				margin-left: 9px;
+			}
+		}
+	}
+
+	// .curremn-movie__rating
+	&__rating {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+
+		.app-icon {
+			color: #d4af37;
+			// margin-right: 5px;
+		}
+	}
+
+	// .curremn-movie__rating-value
+	&__rating-value {}
+
+	// .curremn-movie__overview
+	&__overview {}
+
+	// .curremn-movie__stat
+	&__stat {
+		display: flex;
+		gap: 10px;
+
+	}
+
+	// .curremn-movie__label
+	&__label {
+		// width: 150px;
+		font-weight: bold;
+	}
+
+	// .curremn-movie__value
+	&__value {
+		color: #000;
+	}
+}

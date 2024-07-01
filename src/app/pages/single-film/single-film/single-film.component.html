@@ -1,0 +1,43 @@
+<div *ngIf="movie" class="curremn-movie">
+	<div class="curremn-movie__poster">
+		<div class="curremn-movie__item">
+			<div class="curremn-movie__image curremn-movie__image-ibg">
+				<img [src]="imageSizes.large + movie.backdrop_path" alt="" />
+				<div class="curremn-movie__pane">
+					<h2 class="curremn-movie__name">{{movie.title}}</h2>
+					<div class="curremn-movie__meta">
+						<div class="curremn-movie__info">
+							<span class="curremn-movie__rating">
+								<i class="pi pi-star-fill app-icon " style="font-size: 1.5rem"></i><span class="curremn-movie__rating-value">{{movie.vote_average}}</span><span>/10</span>
+							</span>
+							<span>{{movie.vote_count}} Reviews</span>
+							<span>{{movie.release_date}}</span>
+						</div>
+						<div class="curremn-movie__control">
+							<i class="pi pi-heart hover-color" appPreventDefault (click)="addToFavorites()"></i>
+							<i class="pi pi-eye hover-color" appPreventDefault (click)="addToWatchList()"></i>
+						</div>
+					</div>
+					<!-- <div class="desc mt-6"> {{movie.overview}} </div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="grid">
+		<div class="col-12 md:col-3 lg:col-3">
+			<img class="poster" [src]="imageSizes.medium + movie.poster_path" [alt]="movie.title" />
+		</div>
+		<div class="col-12 md:col-9 lg:col-4 flex flex-column  gap-2">
+			<h2 class="curremn-movie__label">Overview</h2>
+			<p class="curremn-movie__overview">{{ movie.overview }}</p>
+			<div class="curremn-movie__stat">
+				<div class="curremn-movie__label">Release Date:</div>
+				<div class="curremn-movie__value"> {{ movie.release_date }} </div>
+			</div>
+			<div class="curremn-movie__stat">
+				<div class="curremn-movie__label">Language:</div>
+				<div class="curremn-movie__value"> {{ movie.original_language }} </div>
+			</div>
+		</div>
+	</div>
+</div>

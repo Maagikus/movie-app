@@ -1,6 +1,16 @@
 <div class="movie">
-  <div class="movie__container">
-    <app-movie-list></app-movie-list>
-  </div>
+	<app-header></app-header>
+	<main>
+		<div class="movie__container">
+			<div class="movie__wrapper">
+				<div class="movie__sidebar" [class]="sidebarVisible?'movie__sidebar-open':'movie__sidebar-close'">
+					<app-navbar [isOpen]="sidebarVisible" (closeSideBar)="onCloseSidebar($event)" (openSideBar)="onOpenSideBar($event)"></app-navbar>
+				</div>
+				<div class="movie__content">
+					<router-outlet name="additional"></router-outlet>
+					<router-outlet></router-outlet>
+				</div>
+			</div>
+		</div>
+	</main>
 </div>
-<router-outlet />
