@@ -7,7 +7,8 @@
 					<app-navbar [isOpen]="sidebarVisible" (closeSideBar)="onCloseSidebar($event)" (openSideBar)="onOpenSideBar($event)"></app-navbar>
 				</div>
 				<div class="movie__content">
-					<router-outlet name="additional"></router-outlet>
+					<app-favorites></app-favorites>
+					<app-watchlist></app-watchlist>
 					<router-outlet></router-outlet>
 				</div>
 			</div>

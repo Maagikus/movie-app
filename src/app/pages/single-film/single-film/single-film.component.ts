@@ -1,38 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Movie } from 'src/app/interfaces/movie';
-import { allMovies } from 'mock-data';
 import { ImageSizes } from 'src/app/interfaces/image-sizes';
 import { IMAGES_SIZES } from 'src/app/constants/image-sizes';
 import { CommonModule } from '@angular/common';
+import { MovieService } from 'src/app/services/movie.service';
+import { DurationTransformerPipe } from '../../../pipes/duration-transformer/duration-transformer.pipe';
 
 @Component({
   selector: 'app-single-film',
   standalone: true,
-  imports: [CommonModule],
+  providers: [],
   templateUrl: './single-film.component.html',
   styleUrl: './single-film.component.scss',
+  imports: [CommonModule, DurationTransformerPipe],
 })
 export class SingleFilmComponent implements OnInit {
-  movies: Movie[] = allMovies;
+  movies: Movie[] = [];
   movie: Movie | undefined;
   imageSizes: ImageSizes = IMAGES_SIZES;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private movieService: MovieService,
   ) {}
   ngOnInit(): void {
-    this.movie = this.movies.find((item: Movie) => item.id == this.route.snapshot.params['id']);
+    const curentMovieId = this.route.snapshot.params['id'];
+    this.movieService.getSingleFilmById(curentMovieId).subscribe((response) => {
+      this.movie = response;
+    });
   }
   addToFavorites() {
-    this.router.navigate([{ outlets: { additional: ['favourite'] } }], {
-      queryParams: { data: JSON.stringify(this.movie) },
-    });
+    if (this.movie) {
+      const movieId = this.movie.id;
+      this.movieService.setToFavourite(movieId);
+    }
   }
   addToWatchList() {
-    this.router.navigate([{ outlets: { additional: ['watch-list'] } }], {
-      queryParams: { data: JSON.stringify(this.movie) },
-    });
+    if (this.movie) {
+      const movieId = this.movie.id;
+      this.movieService.setToWatchList(movieId);
+    }
   }
 }
