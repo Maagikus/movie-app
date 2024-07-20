@@ -7,6 +7,7 @@ import { WatchlistComponent } from './components/watchlist/watchlist.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { MovieService } from './services/movie.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     FavoritesComponent,
     HttpClientModule,
   ],
-  providers: [MovieService],
+  providers: [MovieService, AuthService],
 })
 export class AppComponent {
   sidebarVisible: boolean = true;

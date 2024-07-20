@@ -1,0 +1,11 @@
+<form [formGroup]="loginForm" class="login" (ngSubmit)="onSubmit()">
+	<div class="login__item">
+		<label for="username">Username</label>
+		<input autocomplete="off" formControlName="userName" id="username" type="text" name="form[]" data-error="Ошибка" placeholder="" class="login__input input">
+	</div>
+	<div class="login__item">
+		<label for="password">Password</label>
+		<input autocomplete="off" formControlName="password" id="password" type="password" name="form[]" data-error="Ошибка" placeholder="" class="login__input input">
+	</div>
+	<button type="submit" class="login__button button">Login</button>
+</form>
