@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, switchMap, catchError, forkJoin, of } from 'rxjs';
+import { Observable, switchMap, catchError } from 'rxjs';
 import { SessionResponse, TokenResponse } from '../interfaces/auth';
 
 @Injectable({
@@ -19,7 +19,6 @@ export class AuthService {
       accept: 'application/json',
       Authorization: `Bearer ${this.bearerToken}`,
     });
-
     return this.http.get<TokenResponse>(this.tokenUrl, { headers }).pipe(
       switchMap((tokenResponse) => {
         const requestToken = tokenResponse.request_token;
@@ -28,20 +27,14 @@ export class AuthService {
           password,
           request_token: requestToken,
         };
-        return forkJoin({
-          validateResponse: this.http.post<TokenResponse>(this.validateUrl, validateBody, {
-            headers,
-          }),
-          sessionResponse: this.http.post<SessionResponse>(
-            this.sessionUrl,
-            { request_token: requestToken },
-            { headers },
-          ),
-        }).pipe(
-          switchMap((responses) => {
-            return of(responses.sessionResponse);
-          }),
-        );
+        return this.http.post<TokenResponse>(this.validateUrl, validateBody, {
+          headers,
+        });
+      }),
+      switchMap((validateResponse) => {
+        const requestToken = validateResponse.request_token;
+        const sessionBody = { request_token: requestToken };
+        return this.http.post<SessionResponse>(this.sessionUrl, sessionBody, { headers });
       }),
       catchError((error) => {
         console.error('Error in creating session', error);
