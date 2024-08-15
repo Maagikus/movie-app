@@ -31,3 +31,15 @@ export interface MovieDto {
   total_results: number;
   total_pages: number;
 }
+export interface MovieFilter {
+  with_genres?: string;
+  without_genres?: string;
+  sort_by?: string;
+  include_adult?: boolean;
+}
+export interface FilterNodes {
+  key: string;
+  label: string;
+  data: string | Genre;
+  children?: FilterNodes[];
+}

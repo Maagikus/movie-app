@@ -1,0 +1,61 @@
+:host ::ng-deep {
+	.searched-movies__button {
+		padding: 8px 36px;
+		background-color: #920202;
+		color: #fff;
+		transition: all 0.3s ease 0s;
+
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: #6e0202;
+			}
+		}
+	}
+
+	.p-paginator-page {
+		min-width: 35px;
+		height: 35px;
+		transition: all 0.3s ease 0s;
+
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: #ccc;
+			}
+		}
+	}
+
+	.p-highlight {
+		background-color: red;
+		color: #fff;
+	}
+}
+
+.searched-movies {
+
+	// .searched-movies__search
+	&__search {}
+
+	// .searched-movies__input
+	&__input {}
+
+	&__button {
+		padding: 8px 36px;
+		background-color: #920202;
+		color: #fff;
+		transition: all 0.3s ease 0s;
+
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: #6e0202;
+			}
+		}
+	}
+}
+
+.flex {}
+
+.flex-column {}
+
+.lign-items-stretch {}
+
+.input {}

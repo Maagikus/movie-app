@@ -1,0 +1,38 @@
+<form [formGroup]="subsctiptionForm" (ngSubmit)="onSubmit()" class="flex flex-column px-8 py-5 gap-4" style="border-radius: 12px;">
+	<div class="inline-flex flex-column gap-2">
+		<label for="name" class="font-semibold">Name</label>
+		<input pInputText id="name" formControlName="name" class="bg-white-alpha-20 border-50 p-3 border-1" [ngClass]="{ 'border-red-500': name.invalid && (name.dirty || name.touched) }" />
+		<div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+			<div *ngIf="name.errors?.['required']">Name is required.</div>
+			<div *ngIf="name.errors?.['minlength']">Name must be at least 3 characters long.</div>
+			<div *ngIf="name.errors?.['forbiddenName']">Name cannot be Bob.</div>
+		</div>
+	</div>
+	<div class="inline-flex flex-column gap-2">
+		<label for="email" class="font-semibold">Email</label>
+		<input pInputText id="email" formControlName="email" class="bg-white-alpha-20 border-50 p-3 border-1" [ngClass]="{ 'border-red-500': email.invalid && (email.dirty || email.touched) }" />
+		<div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+			<div *ngIf="email.errors?.['required']">Email is required.</div>
+			<div *ngIf="email.errors?.['email']">Invalid email format.</div>
+		</div>
+	</div>
+	<div class="inline-flex flex-column gap-2">
+		<label for="birhYear" class="font-semibold">Birth Year</label>
+		<p-dropdown id="birhYear" formControlName="birhYear" [options]="birthYears" placeholder="Select Birth Year" class="bg-white-alpha-20 border-50 p-3 border-1" [ngClass]="{ 'border-red-500': birhYear.invalid && (birhYear.dirty || birhYear.touched) }">
+		</p-dropdown>
+		<div *ngIf="birhYear.invalid && (birhYear.dirty || birhYear.touched)" class="alert alert-danger">
+			<div *ngIf="birhYear.errors?.['required']">Birth Year is required.</div>
+		</div>
+	</div>
+	<div class="inline-flex flex-column gap-2">
+		<label for="Genre" class="font-semibold">Genre</label>
+		<p-multiSelect id="genre" formControlName="genre" [options]="genres" optionLabel="name" placeholder="Select Genres" class="bg-white-alpha-20 border-50 p-3 border-1" [ngClass]="{ 'border-red-500': genre.invalid && (genre.dirty || genre.touched) }">
+		</p-multiSelect>
+		<div *ngIf="genre.invalid && (genre.dirty || genre.touched)" class="alert alert-danger">
+			<div *ngIf="genre.errors?.['required']">Genre is required.</div>
+		</div>
+	</div>
+	<div class="flex align-items-center gap-2">
+		<p-button type="submit" label="Subscribe" [disabled]="subsctiptionForm.invalid" [text]="true" styleClass="p-3 w-full hover:text-white border-1 border-red-700 hover:bg-red-700" class="w-full"></p-button>
+	</div>
+</form>

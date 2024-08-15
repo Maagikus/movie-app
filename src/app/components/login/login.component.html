@@ -1,11 +1,13 @@
-<form [formGroup]="loginForm" class="login" (ngSubmit)="onSubmit()">
-	<div class="login__item">
-		<label for="username">Username</label>
-		<input autocomplete="off" formControlName="userName" id="username" type="text" name="form[]" data-error="Ошибка" placeholder="" class="login__input input">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex flex-column px-8 py-5 gap-4 " style="border-radius: 12px; ">
+	<div class="inline-flex flex-column gap-2">
+		<label for="username" class=" font-semibold">Username</label>
+		<input pInputText id="username" formControlName="userName" class="bg-white-alpha-20 border-50 p-3  border-1 " />
 	</div>
-	<div class="login__item">
-		<label for="password">Password</label>
-		<input autocomplete="off" formControlName="password" id="password" type="password" name="form[]" data-error="Ошибка" placeholder="" class="login__input input">
+	<div class="inline-flex flex-column gap-2">
+		<label for="password" class=" font-semibold">Password</label>
+		<input pInputText id="password" formControlName="password" class="bg-white-alpha-20 border-50 p-3  border-1  " type="password" />
 	</div>
-	<button type="submit" class="login__button button">Login</button>
+	<div class="flex align-items-center gap-2">
+		<p-button type="submit" label="Sign-In" [text]="true" styleClass="p-3 w-full hover:text-white  border-1 border-red-700 hover:bg-red-700" class="w-full" />
+	</div>
 </form>

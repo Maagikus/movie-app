@@ -1,22 +1,48 @@
 import { Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { PopularComponent } from './pages/popular/popular.component';
-import { TopRateComponent } from './pages/top-rate/top-rate.component';
-import { UpcomingComponent } from './pages/upcoming/upcoming.component';
-import { NowPlayingComponent } from './pages/now-playing/now-playing.component';
-import { WatchlistComponent } from './components/watchlist/watchlist.component';
-import { FavoritesComponent } from './components/favorites/favorites.component';
-import { SingleFilmComponent } from './pages/single-film/single-film/single-film.component';
-import { LoginComponent } from './components/login/login.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-  { path: '', component: AppComponent },
-  { path: 'popular', component: PopularComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'top-rate', component: TopRateComponent },
-  { path: 'upcoming', component: UpcomingComponent },
-  { path: 'now-playing', component: NowPlayingComponent },
-  { path: 'current-film/:id', component: SingleFilmComponent },
-  { path: 'watch-list', component: WatchlistComponent, outlet: 'additional' },
-  { path: 'favourite', component: FavoritesComponent, outlet: 'additional' },
+  {
+    path: '',
+    loadComponent: () => import('./pages/home/home.component').then((m) => m.HomeComponent),
+  },
+  {
+    path: 'popular',
+    loadComponent: () =>
+      import('./pages/popular/popular.component').then((m) => m.PopularComponent),
+  },
+  {
+    path: 'top-rate',
+    loadComponent: () =>
+      import('./pages/top-rate/top-rate.component').then((m) => m.TopRateComponent),
+  },
+  {
+    path: 'upcoming',
+    loadComponent: () =>
+      import('./pages/upcoming/upcoming.component').then((m) => m.UpcomingComponent),
+  },
+  {
+    path: 'now-playing',
+    loadComponent: () =>
+      import('./pages/now-playing/now-playing.component').then((m) => m.NowPlayingComponent),
+  },
+  {
+    path: 'current-film/:id',
+    loadComponent: () =>
+      import('./pages/single-film/single-film/single-film.component').then(
+        (m) => m.SingleFilmComponent,
+      ),
+  },
+  {
+    path: 'watchlist',
+    loadComponent: () =>
+      import('./components/watchlist/watchlist.component').then((m) => m.WatchlistComponent),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'favorite',
+    loadComponent: () =>
+      import('./components/favorites/favorites.component').then((m) => m.FavoritesComponent),
+    canActivate: [authGuard],
+  },
 ];

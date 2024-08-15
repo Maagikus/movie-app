@@ -1,37 +1,14 @@
-<!-- <div class="card ">
-	<p-menubar [model]="items" styleClass="h-5rem flex justify-content-between ">
-		<ng-template pTemplate="item" let-item let-root="root" class="">
-			<a pRipple class="flex align-items-center p-menuitem-link">
-				<span class="ml-2">{{ item.label }}</span>
-			</a>
-		</ng-template>
-		<ng-template pTemplate="end">
-			<div class="flex align-items-center gap-2">
-				<input type="text" pInputText placeholder="Search" class="w-8rem sm:w-auto" />
-			</div>
-		</ng-template>
-	</p-menubar>
-</div> -->
-<p-menubar [model]="items">
-	<ng-template pTemplate="item" let-item>
-		<ng-container *ngIf="item.route; ">
-			<a [routerLink]="[{ outlets: { additional: [item.route]} }]" class="p-menuitem-link">
-				<span [class]="item.icon"></span>
-				<span class="ml-2">{{ item.label }}</span>
-			</a>
-		</ng-container>
-		<!-- <ng-template #urlRef>
-			<a *ngIf="item.url; else noLink" [href]="item.url" class="p-menuitem-link">
-				<span [class]="item.icon"></span>
-				<span class="ml-2">{{ item.label }}</span>
-			</a>
-		</ng-template>
-		<ng-template #noLink>
-			<div class="p-menuitem-link">
-				<span [class]="item.icon"></span>
-				<span class="ml-2">{{ item.label }}</span>
-				<span class="pi pi-fw pi-angle-down ml-2"></span>
-			</div>
-		</ng-template> -->
-	</ng-template>
-</p-menubar>
+<header class="header">
+	<div class="header__container">
+		<div class="header__menu menu ">
+			<button type="button" (click)="onToggleSidebar()" class="menu__icon pi pi-bars"></button>
+			<nav class="menu__body">
+				<ul class="menu__list">
+					<li *ngFor="let item of items" class="menu__item"><a [routerLink]="item['route']" class="menu__link">{{item.label}}</a></li>
+				</ul>
+				<p-button (onClick)="show()" styleClass="p-2 w-full hover:text-white  border-1 border-red-700 hover:bg-red-700" label="Subscribe" />
+				<p-toast />
+			</nav>
+		</div>
+	</div>
+</header>

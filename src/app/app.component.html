@@ -1,14 +1,12 @@
 <div class="movie">
-	<app-header></app-header>
+	<app-header (toggleSidebar)="toggleSidebar()"></app-header>
 	<main>
-		<div class="movie__container">
+		<div class=" movie__container">
 			<div class="movie__wrapper">
 				<div class="movie__sidebar" [class]="sidebarVisible?'movie__sidebar-open':'movie__sidebar-close'">
-					<app-navbar [isOpen]="sidebarVisible" (closeSideBar)="onCloseSidebar($event)" (openSideBar)="onOpenSideBar($event)"></app-navbar>
+					<app-navbar [isOpen]="sidebarVisible" (closeSideBar)="toggleSidebar()"></app-navbar>
 				</div>
 				<div class="movie__content">
-					<app-favorites></app-favorites>
-					<app-watchlist></app-watchlist>
 					<router-outlet></router-outlet>
 				</div>
 			</div>
