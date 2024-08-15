@@ -1,11 +1,18 @@
 <div class="movie-list">
 	<div class="movie-list__content">
 		<div class="movie-list__all">
-			<ul class="grid justify-content-center">
+			<ul class="grid justify-content-center" *ngIf="movieList.length; else skeleton">
 				<li class="col-12 md:col-6 sm:col-12 lg:col-2" *ngFor="let movie of movieList; trackBy: trackById">
 					<app-movie-mini-card [movie]="movie"></app-movie-mini-card>
 				</li>
 			</ul>
+			<ng-template #skeleton>
+				<ul class="grid justify-content-center">
+					<li class="col-12 md:col-6 sm:col-12 lg:col-2" *ngFor="let _ of skeletonList;  trackById">
+						<p-skeleton size="15rem"></p-skeleton>
+					</li>
+				</ul>
+			</ng-template>
 		</div>
 	</div>
 </div>

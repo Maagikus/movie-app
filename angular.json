@@ -79,23 +79,24 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
             "polyfills": [
               "zone.js",
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
+            "configPath": "jest.config.ts",
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
+              "src/assets/styles/styles.scss",
               "/node_modules/primeflex/primeflex.css",
               "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css",
-              "src/assets/styles/styles.scss"
+              "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": []
           }

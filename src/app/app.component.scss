@@ -13,18 +13,10 @@
 
 	}
 
-	&__content {
-		flex: 1 1 auto;
+}
+
+:host ::ng-deep {
+	.p-dialog-titlebar {
+		padding: 0px 50px;
 	}
-
-	&__sidebar {
-		&-open {
-			flex: 0 1 300px;
-		}
-
-		&-close {
-			flex: none;
-		}
-	}
-
 }

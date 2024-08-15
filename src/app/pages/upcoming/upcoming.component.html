@@ -1,1 +1,2 @@
 <app-movie-list [movieList]="movieList"></app-movie-list>
+<p-paginator *ngIf="totalPages" (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalPages" />

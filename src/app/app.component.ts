@@ -7,6 +7,10 @@ import { WatchlistComponent } from './components/watchlist/watchlist.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { MovieService } from './services/movie.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { Store } from '@ngrx/store';
+import { loadSubscriptionFromLocalStorage } from './store/actions/movie.actions';
 
 @Component({
   selector: 'app-root',
@@ -22,15 +26,21 @@ import { HttpClientModule } from '@angular/common/http';
     WatchlistComponent,
     FavoritesComponent,
     HttpClientModule,
+    DynamicDialogModule,
   ],
-  providers: [MovieService],
+  providers: [MovieService, AuthService],
 })
 export class AppComponent {
-  sidebarVisible: boolean = true;
-  onOpenSideBar(value: boolean) {
-    this.sidebarVisible = value;
+  constructor(
+    private authService: AuthService,
+    private store: Store,
+  ) {}
+  sidebarVisible: boolean = false;
+  toggleSidebar() {
+    this.sidebarVisible = !this.sidebarVisible;
   }
-  onCloseSidebar(value: boolean) {
-    this.sidebarVisible = value;
+  ngOnInit() {
+    this.authService.initializeUser();
+    this.store.dispatch(loadSubscriptionFromLocalStorage());
   }
 }
